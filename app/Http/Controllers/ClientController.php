@@ -56,9 +56,17 @@ class ClientController extends Controller
         $client->adress = $params['adress'];
         $client->mobile = $params['mobile'];
         $client->phone = $params['phone'];
-        $client->mail = $params['mail'];
-        $client->client = $params['client'];
-        $client->supplier = $params['supplier'];*/
+        $client->mail = $params['mail'];*/
+        if(array_key_exists('client',$params)):
+            $client->client = 1;
+        else:
+            $client->client = 0;
+        endif;
+        if(array_key_exists('supplier',$params)):
+            $client->supplier = 1;
+        else:
+            $client->supplier = 0;
+        endif;
         $newclient = Client::create($client->toArray());
         return redirect(route('index'));
     }
@@ -96,18 +104,19 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $client = Client::find($id);
         if($request->client):
-            $client->client = true;
+            $client->client = 1;
         else:
-            $client->client = false;
+            $client->client = 0;
         endif;
         if($request->supplier):
-            $client->supplier = true;
+            $client->supplier = 1;
         else:
-            $client->supplier = false;
+            $client->supplier = 0;
         endif;
-        $client->update($request->all());
+        $client->update();
         return redirect(route('index'));
     }
 

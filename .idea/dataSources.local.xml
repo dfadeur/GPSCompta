@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - gpscompta@192.168.0.16" uuid="4f894283-f50d-4d87-96a7-beed35d94a67">
+      <secret-storage>master_key</secret-storage>
+      <user-name>globalps</user-name>
+      <schema-pattern>gpscompta.*</schema-pattern>
+      <default-schemas>gpscompta.*</default-schemas>
+    </data-source>
+  </component>
+</project>

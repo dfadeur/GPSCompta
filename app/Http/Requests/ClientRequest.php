@@ -26,8 +26,6 @@ class ClientRequest extends Request
         return [
             'name' => 'required',
 
-            'secondname' => 'required',
-
             'zip' => 'required|max:10'
         ];
     }
