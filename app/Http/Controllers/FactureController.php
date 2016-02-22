@@ -49,7 +49,12 @@ class FactureController extends Controller
      */
     public function store(Request $request)
     {
-        $last_id = Facture::select('id')->orderBy('id', 'desc')->take(1)->get();
+        $count = Facture::all()->count();
+        if ($count>0):
+            $last_id = Facture::select('id')->orderBy('id', 'desc')->take(1)->get();
+        else:
+            $last_id = 0;
+        endif;
         $facture = new Facture();
         $params = $request->except(['_token']);
         $date = new \DateTime(null);
