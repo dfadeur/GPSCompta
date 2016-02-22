@@ -106,6 +106,14 @@ class ClientController extends Controller
     {
 
         $client = Client::find($id);
+        $client->name = $request['name']?$request['name']:"";
+        $client->secondname = $request['secondname']?$request['secondname']:"";
+        $client->zip = $request['zip']?$request['zip']:"";
+        $client->city = $request['city']?$request['city']:"";
+        $client->adress = $request['adress'];
+        $client->mobile = $request['mobile'];
+        $client->phone = $request['phone'];
+        $client->mail = $request['mail'];
         if($request->client):
             $client->client = 1;
         else:
@@ -116,7 +124,7 @@ class ClientController extends Controller
         else:
             $client->supplier = 0;
         endif;
-        $client->update();
+        $client->save();
         return redirect(route('index'));
     }
 

@@ -53,7 +53,13 @@ class ProduitController extends Controller
         $produit->description = $params['description'];
         $produit->buyprice = $params['buyprice'];
         $produit->sellprice = $params['sellprice'];
-        $produit->actif = $params['actif'];
+        //$produit->actif = $params['actif'];
+        if(array_key_exists('actif',$params)):
+            $produit->actif = 1;
+        else:
+            $produit->actif = 0;
+        endif;
+
         $newproduit = Produit::create($produit->toArray());
         return redirect(route('index'));
     }
